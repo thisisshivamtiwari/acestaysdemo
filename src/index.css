@@ -2,7 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom animations for creative hero section */
+/* ============================================
+   TERRACOTTA & CREAM HARMONY THEME
+   Brand Theme for AceStayz
+   ============================================ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;500;600;700&family=Satisfy&display=swap');
+
+/* Base Layer Customizations */
+@layer base {
+  /* Smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-charcoal bg-cream;
+  }
+
+  /* Heading styles with brand typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold-dust ring-offset-2 ring-offset-cream;
+  }
+}
+
+/* ============================================
+   CUSTOM ANIMATIONS
+   ============================================ */
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -11,6 +46,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -23,6 +67,35 @@
   }
 }
 
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes marbled-transition {
   0%, 100% {
     background-position: 0% 50%;
@@ -32,8 +105,79 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes clay-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.6), 0 0 90px rgba(212, 175, 55, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-4px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.03);
+  }
+  75% {
+    transform: translateY(-1px) scale(1.01);
+  }
+}
+
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
   opacity: 0;
 }
 
@@ -41,21 +185,28 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Terracotta & Cream Harmony Theme Styles */
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
 
-/* Terracotta Clay Texture Background */
+/* ============================================
+   TEXTURE BACKGROUNDS
+   ============================================ */
+
+/* Terracotta Clay Texture - For hero sections and overlays */
 .bg-terracotta-texture {
   background-color: #A0523D;
   background-image: 
     radial-gradient(circle at 20% 50%, rgba(139, 69, 53, 0.3) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(160, 82, 61, 0.4) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgba(139, 69, 53, 0.2) 0%, transparent 50%);
-  background-size: 200% 200%, 150% 150%, 180% 180%;
-  background-position: 0% 0%, 100% 100%, 50% 50%;
+    radial-gradient(circle at 40% 20%, rgba(139, 69, 53, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 60% 70%, rgba(184, 111, 90, 0.2) 0%, transparent 50%);
+  background-size: 200% 200%, 150% 150%, 180% 180%, 160% 160%;
+  background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%;
   animation: marbled-transition 15s ease infinite;
 }
 
-/* Cream Fabric Grain Texture */
+/* Cream Fabric Grain Texture - For content backgrounds */
 .bg-cream-texture {
   background-color: #F5F0E6;
   background-image: 
@@ -76,7 +227,29 @@
   background-size: 100% 100%, 100% 100%;
 }
 
-/* Marbled Gradient Transition */
+/* Enhanced Cream Texture with subtle noise */
+.bg-cream-texture-enhanced {
+  background-color: #F5F0E6;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(245, 240, 230, 0.5) 2px,
+      rgba(245, 240, 230, 0.5) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(250, 245, 235, 0.3) 2px,
+      rgba(250, 245, 235, 0.3) 4px
+    ),
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+  background-size: 100% 100%, 100% 100%, 200% 200%;
+}
+
+/* Marbled Gradient Transition - For section dividers */
 .marbled-gradient {
   background: linear-gradient(
     135deg,
@@ -90,12 +263,27 @@
   animation: marbled-transition 8s ease infinite;
 }
 
-/* Button Hover Texture Effect */
+/* Blush Pink Gradient for couple-friendly sections */
+.bg-blush-texture {
+  background-color: #EEC9C5;
+  background-image: 
+    radial-gradient(circle at 30% 40%, rgba(245, 220, 217, 0.5) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(238, 201, 197, 0.3) 0%, transparent 50%);
+  background-size: 150% 150%, 180% 180%;
+  animation: marbled-transition 12s ease infinite;
+}
+
+/* ============================================
+   BUTTON STYLES & INTERACTIVE ELEMENTS
+   ============================================ */
+
+/* Primary Gold Dust Button with Ripple Effect */
 .btn-gold-dust {
   background-color: #D4AF37;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .btn-gold-dust::before {
@@ -119,9 +307,68 @@
   left: 100%;
 }
 
-/* Text Shadow for Serif Headings */
+.btn-gold-dust:active {
+  transform: translateY(0);
+}
+
+/* Terracotta Button with Clay Ripple */
+.btn-terracotta {
+  background-color: #A0523D;
+  color: #F5F0E6;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-terracotta::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(139, 69, 53, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-terracotta:hover {
+  background-color: #8B4535;
+  box-shadow: 0 10px 30px rgba(160, 82, 61, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-terracotta:active::after {
+  width: 300px;
+  height: 300px;
+  animation: clay-ripple 0.6s ease-out;
+}
+
+/* Cream Button with subtle hover */
+.btn-cream {
+  background-color: #F5F0E6;
+  color: #333333;
+  border: 2px solid #A0523D;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-cream:hover {
+  background-color: #A0523D;
+  color: #F5F0E6;
+  box-shadow: 0 8px 20px rgba(160, 82, 61, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/* Serif Elegant Headings */
 .text-serif-elegant {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(51, 51, 51, 0.1);
@@ -132,4 +379,200 @@
   color: #D4AF37;
   font-style: italic;
   font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Emotional Microcopy Style */
+.text-emotional {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  color: #333333;
+  line-height: 1.8;
+}
+
+/* Premium Quote Style */
+.text-premium-quote {
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
+  font-style: italic;
+  color: #D4AF37;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   CARD & CONTAINER STYLES
+   ============================================ */
+
+/* Premium Card with Texture Border */
+.card-premium {
+  @apply bg-cream-texture border-2 border-terracotta/20 rounded-3xl;
+  box-shadow: 0 10px 40px rgba(160, 82, 61, 0.15);
+  transition: all 0.3s ease;
+}
+
+.card-premium:hover {
+  @apply border-terracotta/40;
+  box-shadow: 0 20px 60px rgba(160, 82, 61, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Couple-Friendly Card with Blush Accent */
+.card-couple {
+  @apply bg-cream border-2 border-blush-pink/30 rounded-3xl;
+  box-shadow: 0 10px 40px rgba(238, 201, 197, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card-couple:hover {
+  @apply border-blush-pink/60;
+  box-shadow: 0 10px 40px rgba(238, 201, 197, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Party-Themed Card */
+.card-party {
+  @apply bg-cream-texture border-2 border-gold-dust/30 rounded-3xl;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card-party:hover {
+  @apply border-gold-dust/60;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   NAVIGATION STYLES
+   ============================================ */
+
+/* Sticky Navigation Bar */
+.nav-sticky {
+  @apply sticky top-0 z-50 bg-cream/95 backdrop-blur-sm;
+  box-shadow: 0 4px 20px rgba(245, 240, 230, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Navigation Link Hover Effect */
+.nav-link {
+  @apply text-charcoal font-medium transition-all duration-300;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #A0523D;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #A0523D;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Mobile Bottom Navigation */
+.nav-bottom-mobile {
+  @apply fixed bottom-0 left-0 right-0 bg-terracotta z-50;
+  box-shadow: 0 -20px 60px rgba(160, 82, 61, 0.25);
+  padding: 0.75rem 1rem;
+}
+
+/* ============================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Texture Overlay */
+.texture-overlay {
+  position: relative;
+}
+
+.texture-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Shimmer Effect for Loading States */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 240, 230, 0) 0%,
+    rgba(212, 175, 55, 0.2) 50%,
+    rgba(245, 240, 230, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Premium Tag Badge */
+.badge-premium {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold;
+  @apply bg-gold-dust/10 border border-gold-dust/30 text-gold-dust;
+}
+
+/* Couple-Friendly Badge */
+.badge-couple {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold;
+  @apply bg-blush-pink/10 border border-blush-pink/30 text-terracotta;
+}
+
+/* Party Badge */
+.badge-party {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold;
+  @apply bg-terracotta/10 border border-terracotta/30 text-terracotta;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+/* Mobile-optimized spacing */
+@media (max-width: 640px) {
+  .mobile-optimized {
+    @apply px-4 py-6;
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .desktop-enhanced {
+    @apply px-8 py-12;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
