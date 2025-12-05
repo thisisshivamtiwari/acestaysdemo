@@ -9,6 +9,7 @@ import {
   FiBarChart2,
   FiSettings,
   FiFileText,
+  FiLayout,
   FiChevronDown,
   FiChevronRight
 } from 'react-icons/fi'
@@ -91,7 +92,8 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
       icon: <FiFileText className="w-5 h-5" />,
       path: '/admin/content',
       children: [
-        { id: 'navigation', label: 'Navigation Management', icon: <FiFileText className="w-4 h-4" />, path: '/admin/content/navigation' }
+        { id: 'navigation', label: 'Navigation Management', icon: <FiFileText className="w-4 h-4" />, path: '/admin/content/navigation' },
+        { id: 'page-builder', label: 'Page Builder', icon: <FiLayout className="w-4 h-4" />, path: '/admin/content/page-builder' }
       ]
     },
     {
